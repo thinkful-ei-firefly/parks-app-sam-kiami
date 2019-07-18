@@ -4,9 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>National Park Search Engine</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  
+
+  <main>
+    <h1>National Park Search Engine</h1>
+    <form>
+      <fieldset>
+        <legend>Search Parks Here</legend>
+        <label>
+          Search term:
+          <input class="search" type="text" placeholder="e.x. Yellowstone" required>
+        </label>
+        <label>
+            Within the state(s):
+            <input class="states" type="text" placeholder="e.x. MD, AL">
+        </label>
+        <label>
+            Results returned:
+            <input class="totalResults" type="text" placeholder="10">
+        </label>
+        <button type="submit">Search!</button>
+      </fieldset>
+      <ul></ul>
+    </form>
+  </main>
+
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+
 </body>
 </html>
