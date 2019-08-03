@@ -22,17 +22,18 @@ function getResults(query, maxresults, states) {
   }
 
   const searchString = formatQueryParams(params);
-  const url = 'https://developer.nps.gov/api/v1' + '?' + searchString;
-
-  // const options = {
-  //   headers: new Headers({
-  //     'X-Api-Key': API
-  //   })
-  // };
+  const url = 'https://developer.nps.gov/api/v1/parks' + '?' + searchString;
   
   fetch(url)
-    // .then(response => response.json())
-    .then(jsonData => console.log(jsonData))
+    .then(response => response.json())
+    .then(res => res.data.map(park => {
+      return (`
+        <h3>${park.fullName}</h3>
+        <p>${park.description}</p>
+        <a href="${park.url}">Park Website</a>
+      `)
+    }))
+    .then(res => $('.results').html(res))
     .catch(error => alert(error));
 }
 
@@ -42,7 +43,10 @@ function searchSubmit() {
     const query = $('.search').val();
     const states = $('.states').val();
     let maxResults = $('.totalResults').val();
-    
+    $('.search').val('');
+    $('.states').val('');
+    $('.totalResults').val('');
+
     if (!maxResults) {
       maxResults = 10;
     }
